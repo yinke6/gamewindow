@@ -13,11 +13,12 @@ void gui::showgame()
     g.show();
 }
 
-void gui::refresh(QVector<QPair<int, int> > vect)
+void gui::flush(QVector<QPair<int, int> > vect, int prepared)
 {
     QVector<QPair<int,int>>::iterator i;
     for(i=vect.begin();i!=vect.end();i++){
     g.addplayer(i->first,i->second);}
+    g.showprepared(prepared);
 }
 void gui::myplayer(int seat, int id)
 {
@@ -26,22 +27,22 @@ void gui::myplayer(int seat, int id)
 
 void gui::gprepared()
 {
-    emit prepared();
+    emit ready();
 }
 void gui::gunprepared()
 {
-    emit unprepared();
+    emit cancel();
 }
 void gui::ggoback()
 {
-    emit goback();
+    emit quit();
 }
 
-void gui::start(int role)
+void gui::role(int role)
 {
     g.start(role);
 }
-void gui::getmessage(int seat, QString str)
+void gui::showmessage(int seat, QString str)
 {
     g.getmessage(seat,str);
 }
@@ -55,28 +56,31 @@ void gui::myturn()
 }
 void gui::gendturn()
 {
-    emit end();
+    emit endspeaking();
 }
 
 /*void gui::gameover()
 {
     g.gameover();
 }*/
-int gui::wolfsturn(QVector<int> player)
+/*int gui::wolfsturn(QVector<int> player)
 {
     return g.wolfsturn(player);
-}
-int gui::vote(QVector<int> player)
+}*/
+int gui::decide(QVector<int> player,bool choose0)
 {
+    if(choose0==false)
     return g.vote(player);
+    else
+    return g.poison(player);
 }
 
 
-bool gui::officercandidate()
+bool gui::choose()
 {
     return g.officercandidate();
 }
-bool gui::medicine()
+/*bool gui::medicine()
 {
     return g.medicine();
 }
@@ -95,7 +99,7 @@ int gui::hunter(QVector<int> player)
 bool gui::officerdecide()
 {
     return g.officerdecide();
-}
+}*/
 void gui::gexplode()
 {
     emit explode();

@@ -14,7 +14,9 @@ GameWindow::GameWindow(QWidget *parent) :
     this->setWindowFlags(this->windowFlags()&~Qt::WindowMaximizeButtonHint);
     this->setFixedSize(this->width(),this->height());
     ui->textEdit->setTextColor(Qt::white);
+    ui->statusBar->showMessage(tr("欢迎加入游戏！"),2000);
 
+    ui->statusBar->addPermanentWidget(preparation);
     ui->textEdit_2->setTextColor(Qt::red);
     label[0]=ui->label_1;
     label[1]=ui->label_2;
@@ -84,6 +86,7 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(ui->pushButton_23,&QPushButton::clicked,this,&GameWindow::chooseyes);
     connect(ui->pushButton_24,&QPushButton::clicked,this,&GameWindow::chooseno);
     connect(ui->pushButton_20,&QPushButton::clicked,this,&GameWindow::exploded);
+    connect(ui->pushButton_14,&QPushButton::clicked,ui->textEdit_2,&QTextEdit::clear);
 }
 
 
@@ -154,32 +157,38 @@ void GameWindow::start(int role)
 
     if(role==5)
     {
-        ui->pushButton_19->setVisible(false);
+        ui->pushButton_19->setText(tr("弃票"));
         ui->label_15->setText(tr("平民"));
+        ui->label_16->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/icon/farmer.ico")));
     }
     else if(role==3)
 
     {
-        ui->pushButton_19->setVisible(false);
+        ui->pushButton_19->setText(tr("弃票"));
         ui->label_15->setText(tr("预言家"));
+        ui->label_16->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/icon/crystal_ball.ico")));
     }
     else if(role==2)
     {
-        ui->pushButton_19->setText(tr("不毒"));
+        ui->pushButton_19->setText(tr("不毒/弃票"));
         ui->label_15->setText(tr("女巫"));
+        ui->label_16->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/icon/witch.ico")));
     }
     else if(role==4)
     {
-        ui->pushButton_19->setText(tr("空枪"));
+        ui->pushButton_19->setText(tr("空枪/弃票"));
         ui->label_15->setText(tr("猎人"));
+        ui->label_16->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/icon/gun.ico")));
     }
     else
     {
-        ui->pushButton_19->setText(tr("空刀"));
+        ui->pushButton_19->setText(tr("弃票"));
         ui->pushButton_20->setVisible(true);
         ui->label_15->setText(tr("狼人"));
+        ui->label_16->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/icon/myico.ico")));
     }
-}//图标暂不可用
+     ui->pushButton_19->setEnabled(false);
+}
 void GameWindow::getmessage(int seat,QString str)
 {
     if(seat!=-1)
@@ -448,4 +457,8 @@ bool GameWindow::officerdecide()
     ui->pushButton_23->setVisible(true);
     ui->pushButton_24->setVisible(true);
     return QApplication::exec();
+}
+void GameWindow::showprepared(int prepared)
+{
+    preparation->setText(tr("已有%1人准备了").arg(prepared));
 }

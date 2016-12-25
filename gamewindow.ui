@@ -346,6 +346,9 @@ font: 10pt &quot;Algerian&quot;;
       <string>ID：1234</string>
      </property>
     </widget>
+    <zorder>pushButton_2</zorder>
+    <zorder>label_2</zorder>
+    <zorder>notebook_2</zorder>
    </widget>
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
@@ -702,6 +705,9 @@ font: 10pt &quot;Algerian&quot;;
       <string>ID：1234</string>
      </property>
     </widget>
+    <zorder>pushButton_6</zorder>
+    <zorder>label_6</zorder>
+    <zorder>notebook_2</zorder>
    </widget>
    <widget class="QFrame" name="frame_7">
     <property name="geometry">
@@ -1302,6 +1308,9 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_19">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -1396,7 +1405,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>820</x>
       <y>220</y>
-      <width>101</width>
+      <width>91</width>
       <height>101</height>
      </rect>
     </property>
@@ -1442,14 +1451,15 @@ p, li { white-space: pre-wrap; }
      <string>否</string>
     </property>
    </widget>
-   <zorder>pushButton_22</zorder>
+   <zorder>pushButton_21</zorder>
+   <zorder>pushButton_13</zorder>
    <zorder>pushButton_19</zorder>
    <zorder>pushButton_15</zorder>
+   <zorder>pushButton_22</zorder>
    <zorder>pushButton_20</zorder>
    <zorder>pushButton_18</zorder>
    <zorder>pushButton</zorder>
    <zorder>label</zorder>
-   <zorder>pushButton_13</zorder>
    <zorder>pushButton_14</zorder>
    <zorder>pushButton_17</zorder>
    <zorder>textEdit_2</zorder>
@@ -1467,7 +1477,6 @@ p, li { white-space: pre-wrap; }
    <zorder>frame_12</zorder>
    <zorder>textEdit</zorder>
    <zorder>label_13</zorder>
-   <zorder>pushButton_21</zorder>
    <zorder>label_14</zorder>
    <zorder>label_15</zorder>
    <zorder>label_16</zorder>

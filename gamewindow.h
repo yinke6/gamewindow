@@ -33,7 +33,7 @@ public:
     int prophet(QVector<int> player);//预言家出场，验人结果用字符串告知
     int hunter(QVector<int>);//猎人死亡，发动技能
     //void gameover();
-
+    void showprepared(int);
     ~GameWindow();
 
 signals:
@@ -50,7 +50,7 @@ private:
     void on_pushButton_13_clicked();
     void on_pushButton_15_clicked();
     void on_pushButton_22_clicked();
-
+    QLabel *preparation=new QLabel(this);
     Ui::GameWindow *ui;
     QLabel *label[12];
     QPushButton *pushbutton[12];
